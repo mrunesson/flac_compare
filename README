@@ -1,0 +1,2 @@
+Python module to compare two flac file with each other. The module
+using mutagen to read the flac files.
