@@ -1,0 +1,5 @@
+README
+setup.py
+src/__init__.py
+src/flac_compare.py
+test/testFlacCompare.py
