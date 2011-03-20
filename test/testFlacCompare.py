@@ -15,17 +15,17 @@ class test_compare(unittest.TestCase):
         self.assertTrue(self.comp.equals())
 
     def testMd5Equal(self):
-        self.a.info.md5_signature=237904044194413157454606874029895991563L
-        self.b.info.md5_signature=237904044194413157454606874029895991561L
+        self.a.info.md5_signature=237904044194413157454606874029895991563
+        self.b.info.md5_signature=237904044194413157454606874029895991561
         self.assertFalse(self.comp.equals())
-        self.b.info.md5_signature=237904044194413157454606874029895991563L
+        self.b.info.md5_signature=237904044194413157454606874029895991563
         self.assertTrue(self.comp.equals())
 
     def testTotalSamplesEqual(self):
-        self.a.info.total_samples=2379040L
-        self.b.info.total_samples=2379041L
+        self.a.info.total_samples=2379040
+        self.b.info.total_samples=2379041
         self.assertFalse(self.comp.equals())
-        self.b.info.total_samples=2379040L
+        self.b.info.total_samples=2379040
         self.assertTrue(self.comp.equals())
 
     def testLengthEqual(self):
@@ -123,8 +123,8 @@ class test_compare(unittest.TestCase):
         self.assertEquals(self.comp.removed_tags(),['tag2'])
 
     def testMergeFauilIfNotAudioEqual(self):
-        self.a.info.md5_signature=237904044194413157454606874029895991563L
-        self.b.info.md5_signature=237904044194413157454606874029895991561L
+        self.a.info.md5_signature=237904044194413157454606874029895991563
+        self.b.info.md5_signature=237904044194413157454606874029895991561
         self.failUnlessRaises(Exception, self.comp.merge)
         self.failUnlessRaises(Exception, self.comp.merge_reverse)
 
