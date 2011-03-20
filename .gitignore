@@ -3,3 +3,6 @@ build
 debian/files
 debian/python-flaccompare/
 debian/python-flaccompare.debhelper.log
+debian/python-flaccompare.postinst.debhelper
+debian/python-flaccompare.prerm.debhelper
+debian/python-flaccompare.substvars
