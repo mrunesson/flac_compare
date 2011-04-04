@@ -130,9 +130,7 @@ class test_compare(unittest.TestCase):
 
         
 if __name__ == '__main__':
-    try: import flac_compare
-    except ImportError:
-        sys.path.append(os.path.abspath("../src"))
-        import flac_compare
+    sys.path.append(os.path.abspath("../src"))
+    from flac_compare import flac_compare
 
     unittest.main()
