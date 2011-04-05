@@ -1,3 +1,9 @@
+flaccompare (0.2) maverick; urgency=low
+
+  * Support to compare picture metadate.
+
+ -- Magnus Runesson <magru@linuxalert.org>  Tue, 05 Apr 2011 20:22:47 +0200
+
 flaccompare (0.1) maverick; urgency=low
 
   * source package automatically created by stdeb 0.6.0
