@@ -1,6 +1,7 @@
 import unittest
 import sys
 import os
+from mutagen.flac import Picture
 
 class test_compare(unittest.TestCase):
 
@@ -128,9 +129,36 @@ class test_compare(unittest.TestCase):
         self.failUnlessRaises(Exception, self.comp.merge)
         self.failUnlessRaises(Exception, self.comp.merge_reverse)
 
+    def testRemovedImages(self):
+        p=Picture()
+        self.a.add_picture(p)
+        self.assertEquals(self.comp.removed_pictures(),[p])
+
+    def testNewImages(self):
+        p=Picture()
+        self.b.add_picture(p)
+        self.assertEquals(self.comp.new_pictures(),[p])
+
+    def testCommonPictures(self):
+        p=Picture()
+        self.a.add_picture(p)
+        self.assertEquals(self.comp.common_pictures(),[])
+        self.b.add_picture(p)
+        self.assertEquals(self.comp.common_pictures(),[p])
+        self.assertTrue(self.comp.picture_equal())
+
+    def testEqualPictures(self):
+        p=Picture()
+        self.assertTrue(self.comp.picture_equal())
+        self.a.add_picture(p)
+        self.assertFalse(self.comp.picture_equal())
+        self.b.add_picture(p)
+        self.assertTrue(self.comp.picture_equal())
+
         
 if __name__ == '__main__':
     sys.path.append(os.path.abspath("../src"))
-    from flac_compare import flac_compare
+    sys.path.reverse()
+    import flac_compare
 
     unittest.main()

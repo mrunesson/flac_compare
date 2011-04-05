@@ -3,10 +3,10 @@ from mutagen.flac import FLAC
 class FlacCompare:
     """Can compare and merge two flac files. Is instantied with one old and
     one new flac object representing different flac files. The flac object
-    should be mutagen FLAC instances or similar.
-    """
+    should be mutagen FLAC instances or similar."""
 
     def __init__(self, oldflac, newflac):
+        """To Mutagen FLAC objects to be compared."""
         self.oldflac=oldflac
         self.newflac=newflac
 
@@ -21,6 +21,19 @@ class FlacCompare:
     def removed_tags(self):
         """Return tags exist in oldflac but not newflac."""
         return filter(lambda x: x not in self.newflac, self.oldflac)
+
+    def common_pictures(self):
+        """Return the common pictures for the flac files."""
+        return filter(lambda x: x in self.oldflac.pictures, self.newflac.pictures)
+
+    def new_pictures(self):
+        """Return pictures exist in newflac but not oldflac."""
+        return filter(lambda x: x not in self.oldflac.pictures, self.newflac.pictures)
+
+    def removed_pictures(self):
+        """Return pictures exist in oldflac but not newflac."""
+        return filter(lambda x: x not in self.newflac.pictures, self.oldflac.pictures)
+
 
     def changed_tags(self):
         """Return tags changed between the two flacs."""
@@ -47,7 +60,10 @@ class FlacCompare:
         if self.oldflac.info.length!=self.newflac.info.length:
             return False
         return True
-    
+
+    def picture_equal(self):
+        """Compare if the flacs list of pictures are equal."""
+        return self.oldflac.pictures==self.newflac.pictures
 
     def merge(self):
         """Merge missing tags in oldflac into newflac."""
@@ -76,6 +92,8 @@ class FlacCompare:
             return False
         if self.changed_tags() != []:
             return False
+        if not self.picture_equal():
+            return False
         return True
 
 
@@ -94,10 +112,11 @@ class metadata_flac_stream_info:
     total_samples=None
 
 class DummyFlac(FLAC):
+    """Class that helps write comparesions when both files are not a real file
+    I.E. one can be a database."""
 
     def load(self, filename):
         """Load file information from a filename."""
-
         self.metadata_blocks = [metadata_flac_stream_info()]
         self.tags = None
         self.cuesheet = None
