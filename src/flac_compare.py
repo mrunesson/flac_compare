@@ -82,6 +82,22 @@ class FlacCompare:
                 self.oldflac[k]=self.newflac[k]
 
 
+    def merge_pictures(self):
+        """Merge missing pictures in oldflac into newflac."""
+        if not self.audio_equal():
+            raise Exception
+        for p in self.removed_pictures():
+            self.oldflac.new_picture(p)
+
+
+    def merge_pictures_reverse(self):
+        """Merge missing pictures in newflac into oldflac."""
+        if not self.audio_equal():
+            raise Exception
+        for p in self.new_pictures():
+            self.oldflac.add_picture(p)
+
+
     def equals(self):
         """Compare the two flacs."""
         if not self.audio_equal():
