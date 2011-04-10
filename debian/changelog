@@ -1,3 +1,9 @@
+flaccompare (0.3) maverick; urgency=low
+
+  * Add support for merging picture lists.
+
+ -- Magnus Runesson <magru@linuxalert.org>  Sun, 10 Apr 2011 14:48:37 +0200
+
 flaccompare (0.2) maverick; urgency=low
 
   * Support to compare picture metadate.
