@@ -87,7 +87,7 @@ class FlacCompare:
         if not self.audio_equal():
             raise Exception
         for p in self.removed_pictures():
-            self.oldflac.new_picture(p)
+            self.newflac.add_picture(p)
 
 
     def merge_pictures_reverse(self):
