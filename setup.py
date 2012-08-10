@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='flac_compare',
-      version='0.1',
+      version='0.2',
       author='Magnus Runesson',
       author_email='magru@linuxalert.org',
       url='http://www.linuxalert.org/project/flac-utils/',
