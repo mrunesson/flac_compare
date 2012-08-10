@@ -1,7 +1,9 @@
 flaccompare (0.3.2) maverick; urgency=low
 
   * Fixing release.
-
+	
+ -- Magnus Runesson <magru@linuxalert.org>  Sun, 10 Aug 2012 17:36:30 +0200
+	
 flaccompare (0.3.1) maverick; urgency=low
 
   * Fix embarrasing bug. 
