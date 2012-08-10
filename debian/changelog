@@ -1,3 +1,7 @@
+flaccompare (0.3.2) maverick; urgency=low
+
+  * Fixing release.
+
 flaccompare (0.3.1) maverick; urgency=low
 
   * Fix embarrasing bug. 
