@@ -3,7 +3,7 @@ Maintainer: Magnus Runesson <magru@linuxalert.org>
 Section: python
 Priority: optional
 Build-Depends: debhelper (>= 7), python-support (>= 0.8.4)
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 
 Package: python-flaccompare
 Architecture: all
