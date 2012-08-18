@@ -65,20 +65,27 @@ class FlacCompare:
         """Compare if the flacs list of pictures are equal."""
         return self.oldflac.pictures==self.newflac.pictures
 
-    def merge(self):
+    def __in_ignore_list(self, value, ignore_list):
+        upper_arg = value.upper()
+        for t in ignore_list:
+            if upper_arg.startswith(t):
+                return True
+        return False
+
+    def merge(self, ignore=[]):
         """Merge missing tags in oldflac into newflac."""
         if not self.audio_equal():
             raise Exception
         for k in self.oldflac.keys():
-            if k not in self.newflac:
+            if k not in self.newflac and not self.__in_ignore_list(k,ignore):
                 self.newflac[k]=self.oldflac[k]
 
-    def merge_reverse(self):
+    def merge_reverse(self, ignore=[]):
         """Merge missing tags in newflac into oldflac."""
         if not self.audio_equal():
             raise Exception
         for k in self.newflac.keys():
-            if k not in self.oldflac:
+            if k not in self.oldflac and not self.__in_ignore_list(k,ignore):
                 self.oldflac[k]=self.newflac[k]
 
 
